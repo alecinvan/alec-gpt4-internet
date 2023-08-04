@@ -1,9 +1,20 @@
+from googleapiclient.discovery import build
+from bs4 import BeautifulSoup
+import requests
+import openai
+import gradio as gr
+import os
+
+# https://platform.openai.com/account/api-keys
+openai.api_key = "YOUR_OPENAI_KEY"
+
+
 class GoogleChat():    # GoogleChat类定义了一个聊天机器人的对象，包括了所需要的函数，我们一个一个的对函数说明一下
     def __init__(self):
         # 初始化一个谷歌自定义搜索API， 导入开发者密钥，这个密钥拥有进行身份验证以便调用Google Custom Search API. 同时创建了OpenAI GPT4模型用于生成机器人的回答
         self.service = build(
             # https://developers.google.com/custom-search/v1/introduction
-            "customsearch", "v1", developerKey="AIzaSyB-LORcoRqucF9cm3Rr4reUw5tywSeB4Yo"
+            "customsearch", "v1", developerKey="YOUR_GOOGLE_DEVELOPER_KEY"
         )
 
     def _search(self, query):    # 这个搜索函数用于调用Google Custom Search API进行搜索，并返回搜索结果。
